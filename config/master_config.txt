@@ -1,0 +1,6 @@
+# Bet schedule
+# Maximum number of event pages (50 events per page)
+max_num_event_pages = 40
+
+# Maximum number of days ahead
+max_num_days_ahead = 6

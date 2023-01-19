@@ -1,0 +1,17 @@
+# Betting houses
+1: Bet365
+2: 1XBet
+3: BetClic
+4: BWin
+5: PinnacleSports
+6: BetFair
+
+
+@PEDRO 1
+pedroc2468@gmail.com
+All:All
+
+@PEDRO 2
+pedroc__24@hotmail.com
+NCAAB:1,2
+WNCAAB:3,4

@@ -1,0 +1,9 @@
+# Example commentary (league name followed by number of days to look ahead for bet open)
+League 1: 1
+
+# NCAA
+NCAAB: 2
+WNCAAB: 2
+
+# FPDB
+LPB: 3

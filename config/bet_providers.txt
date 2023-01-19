@@ -1,0 +1,6 @@
+Bet365: 1
+1XBet: 2
+BetClic: 3
+BWin: 4
+PinnacleSports: 5
+BetFair: 6
