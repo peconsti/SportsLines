@@ -9,48 +9,41 @@ import smtplib
 
 # EMAIL
 # Addresses
-fiba_predict_email_addresses = {1: {'1': 'fibapredict@hotmail.com',
-                                    '2': 'fibapredict2@hotmail.com',
-                                    '3': 'fibapredict3@hotmail.com',
-                                    '4': 'fibapredict4@hotmail.com',
-                                    '5': 'fibapredict5@hotmail.com'},
-                                2: {'1': 'fibapredict6@hotmail.com',
-                                    '2': 'fibapredict7@hotmail.com',
-                                    '3': 'fibapredict8@hotmail.com',
-                                    '4': 'fibapredict9@hotmail.com',
-                                    '5': 'fibapredict10@hotmail.com'},
-                                3: {'1': 'fibapredict11@hotmail.com',
-                                    '2': 'fibapredict12@hotmail.com',
-                                    '3': 'fibapredict13@hotmail.com',
-                                    '4': 'fibapredict14@hotmail.com',
-                                    '5': 'fibapredict15@hotmail.com'},
-                                4: {'1': 'fibapredict16@hotmail.com',
-                                    '2': 'fibapredict17@hotmail.com',
-                                    '3': 'fibapredict18@hotmail.com',
-                                    '4': 'fibapredict19@hotmail.com',
-                                    '5': 'fibapredict20@hotmail.com'}}
+fiba_predict_email_addresses = {1: {'1': 'sportslines@hotmail.com',
+                                    '2': 'sportslines2@hotmail.com',
+                                    '3': 'sportslines3@hotmail.com',
+                                    '4': 'sportslines4@hotmail.com',
+                                    '5': 'sportslines5@hotmail.com'},
+                                2: {'1': 'sportslines6@hotmail.com',
+                                    '2': 'sportslines7@hotmail.com',
+                                    '3': 'sportslines8@hotmail.com',
+                                    '4': 'sportslines9@hotmail.com',
+                                    '5': 'sportslines10@hotmail.com'}}
 
 # Passwords
-fiba_predict_email_passwords = {1: {'1': 'qdoterkztayqsujd',
-                                    '2': 'rsfatslguxzveqmr',
-                                    '3': 'vejhrdbgfwyksxpn',
-                                    '4': 'jhoreuodxifjnegb',
-                                    '5': 'swoaedgqdrrkdafq'},
-                                2: {'1': 'iusdtoaslekrfylh',
-                                    '2': 'wuifxinwruvpwyei',
-                                    '3': 'ubbsmuwpahnsuglb',
-                                    '4': 'rgteitjdtxxefttd',
-                                    '5': 'vosinaoledjrdrci'},
-                                3: {'1': 'tilqihpfwschwuzl',
-                                    '2': 'bnnuzmhjdvxsyukp',
-                                    '3': 'uuguktlpzbudjavx',
-                                    '4': 'rnwuvtjvxxbfiyxy',
-                                    '5': 'cawowwdieutbyjzc'},
-                                4: {'1': 'hjrykraeaerhfmle',
-                                    '2': 'qthyzaipwyyqvisi',
-                                    '3': 'srtknaactkmdsigf',
-                                    '4': 'tczhujdbbhkflvao',
-                                    '5': 'recqqokjhjolzids'}}
+fiba_predict_email_passwords = {1: {'1': 'lmzwjwmgoezggtzz',
+                                    '2': 'ruajffbfbsxzalkn',
+                                    '3': 'qkajxxlawccesttp',
+                                    '4': 'lguunwgyptxuwfsf',
+                                    '5': 'qubigilznzkbalrb'},
+                                2: {'1': 'umikgklazohrfbja',
+                                    '2': 'gdtxxzjcmrjfgkmy',
+                                    '3': 'ujoppokoetqssnyz',
+                                    '4': 'yjiupqzrftbhbqtw',
+                                    '5': 'eomwxbudiwvalrfp'}}
+
+# RECOVERY CODES
+# 1 -> BLZEE-ZDYCD-4TCNY-NA37R-MZQ4K
+# 2 -> WPABC-E3HL4-Z97CP-BY4UH-R8CK4
+# 3 -> SH8QD-KV93A-NF94D-E2534-2S6XU
+# 4 -> 4AJWP-TA3FY-X2DKQ-HH6LS-86U2V
+# 5 -> 5GBYK-2JZYZ-BP72M-YZRT5-9YBAJ
+# 6 -> 97LWH-TYVX6-5U6HZ-Y8TNZ-XU6YH
+# 7 -> E2PT8-Y5TQN-EPAKC-F84P9-XV7FR
+# 8 -> SE6CW-KBLPE-8MQZ2-X2U75-5TTUU
+# 9 -> CUBBD-Z7MU5-P29MN-3JH44-5MR5E
+# 10 -> W9AFZ-69Z8Y-3Q3UV-2TWH8-RQYCS
+
 
 # Account schedule
 email_account_schedule = {'1': '00:00-06:00',
