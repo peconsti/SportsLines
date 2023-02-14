@@ -6,10 +6,11 @@ from email.mime.text import MIMEText
 import utils
 import queue
 import smtplib
+from socket import gaierror
 
 # EMAIL
 # Addresses
-fiba_predict_email_addresses = {1: {'1': 'sportslines@hotmail.com',
+sports_lines_email_addresses = {1: {'1': 'sportslines@hotmail.com',
                                     '2': 'sportslines2@hotmail.com',
                                     '3': 'sportslines3@hotmail.com',
                                     '4': 'sportslines4@hotmail.com',
@@ -18,10 +19,20 @@ fiba_predict_email_addresses = {1: {'1': 'sportslines@hotmail.com',
                                     '2': 'sportslines7@hotmail.com',
                                     '3': 'sportslines8@hotmail.com',
                                     '4': 'sportslines9@hotmail.com',
-                                    '5': 'sportslines10@hotmail.com'}}
+                                    '5': 'sportslines10@hotmail.com'},
+                                3: {'1': 'sportslines11@hotmail.com',
+                                    '2': 'sportslines12@hotmail.com',
+                                    '3': 'sportslines13@hotmail.com',
+                                    '4': 'sportslines14@hotmail.com',
+                                    '5': 'sportslines15@hotmail.com'},
+                                4: {'1': 'sportslines16@hotmail.com',
+                                    '2': 'sportslines17@hotmail.com',
+                                    '3': 'sportslines18@hotmail.com',
+                                    '4': 'sportslines19@hotmail.com',
+                                    '5': 'sportslines20@hotmail.com'}}
 
 # Passwords
-fiba_predict_email_passwords = {1: {'1': 'lmzwjwmgoezggtzz',
+sports_lines_email_passwords = {1: {'1': 'lmzwjwmgoezggtzz',
                                     '2': 'ruajffbfbsxzalkn',
                                     '3': 'qkajxxlawccesttp',
                                     '4': 'lguunwgyptxuwfsf',
@@ -30,7 +41,17 @@ fiba_predict_email_passwords = {1: {'1': 'lmzwjwmgoezggtzz',
                                     '2': 'gdtxxzjcmrjfgkmy',
                                     '3': 'ujoppokoetqssnyz',
                                     '4': 'yjiupqzrftbhbqtw',
-                                    '5': 'eomwxbudiwvalrfp'}}
+                                    '5': 'eomwxbudiwvalrfp'},
+                                3: {'1': 'lngpkcmmgbpqlagn',
+                                    '2': 'xjuttacwjfeblrix',
+                                    '3': 'omnsuqoksgontsxh',
+                                    '4': 'hwdwcarztjwqqadt',
+                                    '5': 'zzqvuyzhklzkyztu'},
+                                4: {'1': 'mjxqrplrfkibgajx',
+                                    '2': 'sdgobmlpcfacvcnd',
+                                    '3': 'sluzqweeyldptzdn',
+                                    '4': 'zrcfasbnhjbunpii',
+                                    '5': 'utdpqjimvxcijsoe'}}
 
 # RECOVERY CODES
 # 1 -> BLZEE-ZDYCD-4TCNY-NA37R-MZQ4K
@@ -43,6 +64,16 @@ fiba_predict_email_passwords = {1: {'1': 'lmzwjwmgoezggtzz',
 # 8 -> SE6CW-KBLPE-8MQZ2-X2U75-5TTUU
 # 9 -> CUBBD-Z7MU5-P29MN-3JH44-5MR5E
 # 10 -> W9AFZ-69Z8Y-3Q3UV-2TWH8-RQYCS
+# 11 -> SXTJK-3XC8T-WJQNK-6C53L-LWN7L
+# 12 -> TBBMB-F4Q4L-VX3UZ-K8FSL-6XHRR
+# 13 -> HWMPX-KHFM9-B4CWF-LRXEC-6LKEG
+# 14 -> 2RUSJ-YBPRT-7ESRM-J4DZR-H5ZMJ
+# 15 -> 4AHKG-MZK8N-5T7DR-ZLEKA-DKNSC
+# 16 -> AJW8P-U8P5F-X8YXJ-VCV93-YVG55
+# 17 -> 2JNT6-BRWDR-672WC-C67M7-U9HWJ
+# 18 -> XJWZ9-26WV5-DCJ9P-AUZFQ-K65H3
+# 19 -> AN4JT-JDDU7-86R9E-87PJ8-B7L6K
+# 20 -> 4LEDJ-HHX87-X7B85-APS33-KC3FX
 
 
 # Account schedule
@@ -96,7 +127,7 @@ def get_email_id_to_use():
 
     # Layer
     if switch_layer[0]:
-        if email_layer_to_use[0] == len(fiba_predict_email_addresses):
+        if email_layer_to_use[0] == len(sports_lines_email_addresses):
             email_layer_to_use[0] = 1
         else:
             email_layer_to_use[0] += 1
@@ -113,15 +144,20 @@ def create_conn():
     sched_id = schedule_id_to_use[0]
 
     # Create connection
-    conn = smtplib.SMTP("smtp-mail.outlook.com", 587)  # creates SMTP session (HOTMAIL)
-    conn.starttls()  # start TLS for security
+    conn = None
     try:
-        conn.login(fiba_predict_email_addresses[layer_to_use][sched_id],
-                   fiba_predict_email_passwords[layer_to_use][sched_id])  # Authentication
-    except smtplib.SMTPAuthenticationError:  # blocked account
-        utils.print_to_console(fiba_predict_email_addresses[layer_to_use][sched_id] + ' is blocked?')
-        switch_layer[0] = True
-        conn = None
+        conn = smtplib.SMTP("smtp-mail.outlook.com", 587)  # creates SMTP session (HOTMAIL)
+    except gaierror:
+        """Do nothing"""  # socket error
+    else:
+        conn.starttls()  # start TLS for security
+        try:
+            conn.login(sports_lines_email_addresses[layer_to_use][sched_id],
+                       sports_lines_email_passwords[layer_to_use][sched_id])  # Authentication
+        except smtplib.SMTPAuthenticationError:  # blocked account
+            utils.print_to_console(sports_lines_email_addresses[layer_to_use][sched_id] + ' is blocked?')
+            switch_layer[0] = True
+            conn = None
 
     return conn
 
@@ -150,7 +186,7 @@ def send_email(msg_tuple):
     # Get email address to use
     sched_id = schedule_id_to_use[0]
     layer = email_layer_to_use[0]
-    email_address_to_use = fiba_predict_email_addresses[layer][sched_id]
+    email_address_to_use = sports_lines_email_addresses[layer][sched_id]
     msg_to_use = msg_tuple[0][layer][sched_id]
 
     # Get account id to use
@@ -228,16 +264,16 @@ def create_report(report_type, bet_sheet, extra_var):
 
             # Body
             if send_to[0] == 'Clear':
-                html_body_of_email = generate_html_report(html_header, links, betting_odds, extra_var)
+                html_body_of_email = generate_html_report(html_header, betting_odds, extra_var)
             else:
                 html_body_of_email = generate_incognito_html_report(html_header, betting_odds, extra_var)
 
             alt_messages = {}
-            for layer_num in fiba_predict_email_addresses:
-                for sched_id in fiba_predict_email_addresses[layer_num]:
+            for layer_num in sports_lines_email_addresses:
+                for sched_id in sports_lines_email_addresses[layer_num]:
                     msg = MIMEMultipart()
-                    msg['From'] = fiba_predict_email_addresses[layer_num][sched_id]
-                    msg['Cc'] = fiba_predict_email_addresses[layer_num][sched_id]
+                    msg['From'] = sports_lines_email_addresses[layer_num][sched_id]
+                    msg['Cc'] = sports_lines_email_addresses[layer_num][sched_id]
                     msg['Subject'] = subject_content
 
                     part2 = MIMEText(html_body_of_email, 'html')
@@ -376,7 +412,7 @@ def generate_incognito_html_report(header, betting_odds, extra_var):
 
 
 # Generate HTML report
-def generate_html_report(header, links, betting_odds, extra_var):
+def generate_html_report(header, betting_odds, extra_var):
     html_string = """\
 <html>
 <head>
@@ -392,9 +428,6 @@ tr:hover {background-color: #D6EEEE;}
 
     # Header
     html_string += """<h2>""" + header + """</h2>"""
-
-    # Links
-    html_string += """<p>""" + links[0] + """</p>"""
 
     # Betting odds
     if betting_odds:

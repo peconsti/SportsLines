@@ -242,9 +242,9 @@ def new_bet_open():
                             send_to = report.get_send_report_to(league_name, 'New bet open')
 
                             # SEND EMAIL
-                            if send_to:
+                            if send_to and event_id in bet_links_opened_info:
                                 # New bet open alert
-                                bet_sheet = bet_func.bet_sched[event_id] | {'BettingOdds': betting_odds}
+                                bet_sheet = bet_links_opened_info[event_id] | {'BettingOdds': betting_odds}
                                 report.create_report('New bet open', bet_sheet, new_providers)
 
                                 num_new_bet_open[0] += 1
